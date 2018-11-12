@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Lab12.Models.Empleado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+   
+    @using (Html.BeginForm("IndexBusqueda", "Empleado", FormMethod.Get))
+    {
+        <fieldset>
+            <legend>Buscar</legend>
+            @Html.Label("lblEmpleado", "Empleado:")
+            @Html.TextBox("nombre")
+            <input type="submit" value="Buscar" />
+        </fieldset>
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellidos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tratamiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaContratacion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cargo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tratamiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaNacimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaContratacion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdEmpleado }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdEmpleado }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdEmpleado })
+        </td>
+    </tr>
+}
+
+</table>

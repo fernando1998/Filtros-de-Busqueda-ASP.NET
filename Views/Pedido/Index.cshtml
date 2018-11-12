@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Lab12.Models.Pedido>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @using (Html.BeginForm("IndexBusqueda", "Pedido", FormMethod.Get))
+    {
+        @Html.Label("lblCliente", "Cliente:")
+        @Html.DropDownList("IdCliente", (SelectList)ViewBag.IdCliente, "--Seleccione--", htmlAttributes: new { @class = "form-control" })
+        <input type="submit" value="Buscar" />
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdEmpleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaPedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaEntrega)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaEnvio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FormaEnvio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Destinatario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdEmpleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaPedido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaEntrega)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaEnvio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FormaEnvio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cargo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Destinatario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdPedido }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdPedido }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdPedido })
+        </td>
+    </tr>
+}
+
+</table>
